@@ -12,6 +12,7 @@ function Child({ std, list }) {
         return (
           <div key={indx}>
             <h3>{ele.name}</h3>
+            <button>Delete</button>
           </div>
         );
       })}
