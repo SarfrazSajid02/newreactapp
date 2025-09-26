@@ -1,42 +1,38 @@
-import Child from "./Child";
 import { useState } from "react";
-import Listitem from "./component/Listitem";
+
 import Login from "./pages/Login";
 
 function App() {
-  const [count, setCount] = useState(0);
-  console.log(count);
+  const [email, setEmail] = useState("");
+  const [pwd, setPwd] = useState("");
+  const [isLogin, setIsLogin] = useState(false);
 
-  let list = [
-    { id: 0, name: "ali" },
-    { id: 1, name: "asif" },
-    { id: 2, name: "aqib" },
-    { id: 3, name: "adeel" },
-    { id: 4, name: "awais" },
-  ];
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let userEmail = "ali@gmail.com";
+    let userPwd = "123";
 
-  // let std = "ali";
-  let std = {
-    name: "ali",
-    rollno: 23,
+    if (email == userEmail && pwd == userPwd) {
+      setIsLogin(true);
+      console.log(email, pwd);
+    } else {
+      alert("not Valid email and password");
+    }
   };
 
-  // const Clickme = (name) => {
-  //   alert(`my first App ${name}`);
-  // };
-
+  let name = "ali";
   return (
     <>
-      {/* <h3>Count {count}</h3>
-      <button onClick={() => setCount(count + 1)}>increment</button>
-      <button onClick={() => setCount(count - 1)}>decrement</button>
-      <button onClick={() => setCount(0)}>reset</button>
-
-      {/* my name is */}
-      {/* <div>{name}</div> */}
-      {/* <Child std={std} list={list} /> */}
-      <Login />
-      {/* <Listitem /> */}
+      <Login
+      name={name}
+        email={email}
+        setEmail={setEmail}
+        pwd={pwd}
+        setPwd={setPwd}
+        handleSubmit={handleSubmit}
+        isLogin={isLogin}
+        setIsLogin={setIsLogin}
+      />
     </>
   );
 }
